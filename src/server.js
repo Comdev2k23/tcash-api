@@ -2,10 +2,13 @@ import express from 'express'
 import dotenv from 'dotenv'
 import { initDB } from './config/db.js'
 import transactionRouter from './routes/transactions.routes.js'
+import userRouter from './routes/users.routes.js'
+import job from './config/cron.js'
 
 dotenv.config()
 
 const app = express()
+if (process.env.NODE_ENV === "production") job.start();
 
 //Middleware
 app.use(express.json())
@@ -17,6 +20,7 @@ app.get('/api/health', (req, res) => {
 } )
 
 app.use('/api/transactions', transactionRouter)
+app.use('/api/users', userRouter)
 
 initDB().then(() => {
     app.listen(PORT, ()=> {
