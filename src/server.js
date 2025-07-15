@@ -8,7 +8,7 @@ import job from './config/cron.js'
 dotenv.config()
 
 const app = express()
-// if (process.env.NODE_ENV === "production") job.start();
+if (process.env.NODE_ENV === "production") job.start();
 
 //Middleware
 app.use(express.json())
