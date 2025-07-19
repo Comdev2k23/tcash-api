@@ -49,6 +49,7 @@ export async function updateUser(req, res, next) {
       name,
       balance: parsedBalance,
     });
+    next()
   } catch (error) {
     console.error("Error upserting user:", error);
     res.status(500).json({ message: "Internal server error" });
