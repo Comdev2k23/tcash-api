@@ -20,13 +20,23 @@ export async function initDB() {
       CREATE TABLE IF NOT EXISTS transactions (
         id SERIAL PRIMARY KEY,
         user_id VARCHAR(255) NOT NULL,
-        name VARCHAR(255) NOT NULL,
         type VARCHAR(255) NOT NULL,
-        refNumber VARCHAR(255) NOT NULL,
+        refNumber VARCHAR(255) NOT NULL UNIQUE,
         amount DECIMAL(10, 2) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `;
+
+    //Create `notes` table
+    await sql`
+      CREATE TABLE IF NOT EXISTS notes (
+      id SERIAL PRIMARY KEY,
+      user_id VARCHAR(255) NOT NULL,
+      is_done BOOLEAN DEFAULT FALSE,
+      content VARCHAR(255) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `
 
     console.log("✅ Database initialized successfully");
   } catch (error) {
