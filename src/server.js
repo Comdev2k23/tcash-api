@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "production") job.start();
 
 //Middleware
 app.use(express.json())
-app.use(limiter)
+// app.use(limiter)
 
 const PORT = process.env.PORT || 5001
 
