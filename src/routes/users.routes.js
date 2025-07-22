@@ -5,6 +5,6 @@ const userRouter = express.Router()
 
 
 userRouter.get('/:userId', getUserById);
-userRouter.post('/update-user', updateUserBalance)
+userRouter.post('/update-balance', updateUserBalance)
 
 export default userRouter

@@ -37,13 +37,6 @@ export const updateUserBalance = async (req, res, next) => {
     }
 
     // Get current balance first
-    const [user] = await sql`
-      SELECT balance FROM users WHERE user_id = ${userId}
-    `;
-
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
 
     const newBalance = Number(user.balance) + parsedAmount;
 
