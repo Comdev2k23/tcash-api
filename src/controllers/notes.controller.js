@@ -41,7 +41,7 @@ export async function getNotes(req, res, next){
             ORDER BY created_at DESC
         `
         if(results.length === 0){
-            return res.status(404).json({message: 'Notes/s not found'})
+            return res.status(404).json(notes || [])
         }
 
         res.status(200).json(results)
