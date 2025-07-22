@@ -43,9 +43,7 @@ export const updateUserBalance = async (req, res, next) => {
     // Prevent balance from going negative
     if (newBalance < 0) {
       return res.status(400).json({ 
-        message: "Insufficient funds",
-        currentBalance: user.balance,
-        attemptedUpdate: parsedAmount
+        message: "Insufficient funds"
       });
     }
 
