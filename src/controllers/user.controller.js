@@ -31,32 +31,18 @@ export const updateUserBalance = async (req, res, next) => {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
-    const parsedAmount = parseFloat(balance);
-    if (isNaN(parsedAmount)) {
-      return res.status(400).json({ message: "Invalid amount" });
-    }
-
-    // Get current balance first
-
-    const newBalance = Number(user.balance) + parsedAmount;
-
-    // Prevent balance from going negative
-    if (newBalance < 0) {
-      return res.status(400).json({ 
-        message: "Insufficient funds"
-      });
-    }
+    
 
     // Update balance
     await sql`
       INSERT INTO users (user_id, balance)
-      VALUES(${userId}, ${newBalance})
+      VALUES(${userId}, ${balance})
     `;
 
     res.status(200).json({
       message: "Balance updated successfully",
       userId,
-      newBalance,
+      balance,
     });
   } catch (error) {
     console.error("Error updating balance:", error);
