@@ -9,9 +9,9 @@ export const getUserById = async (req, res) => {
       SELECT * FROM users WHERE user_id = ${userId}
     `;
 
-    if (!user) {
-      return res.status(404).json({ message: "User not found." });
-    }
+    // if (!user) {
+    //   return res.status(404).json({ message: "User not found." });
+    // }
 
     return res.status(200).json({ user });
   } catch (err) {
