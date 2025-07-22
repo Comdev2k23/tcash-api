@@ -51,7 +51,7 @@ export const updateUserBalance = async (req, res, next) => {
 
     // Update balance
     await sql`
-      INSERT TO users (user_id, balance)
+      INSERT INTO users (user_id, balance)
       VALUES(${userId}, ${newBalance})
     `;
 
