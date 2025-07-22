@@ -37,16 +37,15 @@ export async function updateUser(req, res, next) {
 
     // ✅ UPSERT using ON CONFLICT
     await sql`
-      INSERT INTO users (user_id, name, balance)
-      VALUES (${userId}, ${name}, ${parsedBalance})
+      INSERT INTO users (user_id, balance)
+      VALUES (${userId}, ${parsedBalance})
       ON CONFLICT (user_id) DO UPDATE
-      SET name = ${name}, balance = ${parsedBalance}
+      SET  balance = ${parsedBalance}
     `;
 
     res.status(200).json({
       message: "User upserted successfully",
       userId,
-      name,
       balance: parsedBalance,
     });
     next()
