@@ -26,11 +26,6 @@ export const getUserById = async (req, res) => {
 export const updateUserBalance = async (req, res, next) => {
   try {
     const { userId, balance } = req.body;
-
-    if (!userId || amount == null) {
-      return res.status(400).json({ message: "Missing required fields" });
-    }
-
     
 
     // Update balance
