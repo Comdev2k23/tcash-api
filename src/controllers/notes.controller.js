@@ -40,9 +40,6 @@ export async function getNotes(req, res, next){
             SELECT * FROM notes WHERE user_id = ${userId}
             ORDER BY created_at DESC
         `
-        if(results.length === 0){
-            return res.status(404).json(notes || [])
-        }
 
         res.status(200).json(results)
 
