@@ -27,9 +27,9 @@ export const updateUserBalance = async (req, res, next) => {
   try {
     const { userId, amount } = req.body;
 
-    if (!userId || amount == null) {
-      return res.status(400).json({ message: "Missing required fields" });
-    }
+    // if (!userId || amount == null) {
+    //   return res.status(400).json({ message: "Missing required fields" });
+    // }
 
     const parsedAmount = parseFloat(amount);
     if (isNaN(parsedAmount)) {
