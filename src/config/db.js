@@ -10,7 +10,6 @@ export async function initDB() {
     await sql`
       CREATE TABLE IF NOT EXISTS users (
         user_id VARCHAR(255) PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
         balance DECIMAL(10, 2) NOT NULL DEFAULT 0.00
       );
     `;
