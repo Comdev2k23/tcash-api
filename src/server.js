@@ -6,6 +6,7 @@ import userRouter from './routes/users.routes.js'
 import job from './config/cron.js'
 import notesRouter from './routes/notes.routes.js'
 import limiter from '../src/middlewares/rateLimiter.js'
+import cors from 'cors';
 
 dotenv.config()
 
@@ -14,6 +15,7 @@ const app = express()
 if (process.env.NODE_ENV === "production") job.start();
 
 //Middleware
+app.use(cors());
 app.use(express.json())
 // app.use(limiter)
 
